@@ -29,19 +29,38 @@ export class CursosFormComponent implements OnInit {
     const curso = this.route.snapshot.data['curso'];
 
     this.form = this.fb.group({
-      id: [curso.id],
+      idProduto: [curso.idProduto],
       nome: [
         curso.nome,
         [
           Validators.required
         ],
       ],
-      telefone: [
-        curso.telefone,
+      descricao: [
+        curso.descricao,
         [
           Validators.required
         ],
-      ]
+      ],
+      foto: [
+        curso.foto,
+        [
+          Validators.required
+        ],
+      ],
+      preco: [
+        curso.preco,
+        [
+          Validators.required,
+        ]
+      ],
+      idCategoria: [
+        curso.idCategoria,
+        [
+          Validators.required
+        ],
+      ],
+
     });
   }
 
@@ -51,7 +70,7 @@ export class CursosFormComponent implements OnInit {
       this._cursosService.Save(this.form.value).subscribe(
         (success) => {
           this._alertModalService.showAlert(
-            'Curso salvo com sucesso!',
+            'Produto salvo com sucesso!',
             'success',
             1500
           );
@@ -59,7 +78,7 @@ export class CursosFormComponent implements OnInit {
         },
         (error) =>
           this._alertModalService.showAlert(
-            'Ocorreu um erro ao salvar o curso, tente novamente!',
+            'Ocorreu um erro ao salvar o produto, tente novamente!',
             'danger',
             1500
           ),

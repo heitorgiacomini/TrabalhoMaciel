@@ -22,24 +22,30 @@ export class CursosService {
   }
 
   GetById(id: number) {
+    console.log("getbyid");
     return this._http.get<Curso>(`${this.API}/${id}`)
     .pipe(
       take(1)
     );
   }
-  Create(curso: Curso) {
-    return this._http.post(this.API, curso)
+  Create(curso: IProduto) {
+    let url = this.API+`add-produto.php?nome=${curso.nome}&preco=${curso.preco}&descricao=${curso.descricao}&idCategoria=${curso.idCategoria}&foto=${curso.foto}`;
+    return this._http.post(url, null)
     .pipe(
       take(1)
-    );
+      );
+    // return this._http.post(this.API, curso)
+    // .pipe(
+    //   take(1)
+    // );
   }
 
-  Update(curso: Curso) {
-    return this._http.put(`${this.API}/${curso.id}`, curso)
-    .pipe(
-      take(1)
-    );
-  }
+  // Update(curso: IProduto) {
+  //   return this._http.put(`${this.API}/${curso.id}`, curso)
+  //   .pipe(
+  //     take(1)
+  //   );
+  // }
 
   Delete(id:number){
     let url = this.API+`del-produto.php?idProduto=${id}`;
@@ -54,10 +60,10 @@ export class CursosService {
     // );
   }
 
-  Save(curso: Curso){
-    if(curso.id){
-      return this.Update(curso);
-    }
+  Save(curso: IProduto){
+    // if(curso.idProduto){
+    //   return this.Update(curso);
+    // }
     return this.Create(curso);
   }
 

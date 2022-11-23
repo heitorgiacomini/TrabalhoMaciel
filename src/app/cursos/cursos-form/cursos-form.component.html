@@ -1,37 +1,102 @@
 <form class="row g-3 needs-validation" novalidate [formGroup]="form">
   <div class="col-md-12">
-    <label for="nome" class="form-label">Nome</label>
-    <input
-      type="text"
-      class="form-control"
-      id="nome"
-      required
-      formControlName="nome"
-      [ngClass]="{ 'is-invalid': submitted && hasError('nome') }"
-    />
-    <div class="valid-feedback">Looks good!</div>
-    <div
-      class="invalid-feedback"
-      *ngIf="hasError('nome') && hasError('nome')!['required']"
-    >
-      Por favor informe o nome para cadastro.
+    <div class="row">
+      <label for="nome" class="form-label">Nome</label>
+      <input
+        type="text"
+        class="form-control"
+        id="nome"
+        required
+        formControlName="nome"
+        [ngClass]="{ 'is-invalid': submitted && hasError('nome') }"
+      />
+      <div class="valid-feedback">Looks good!</div>
+      <div
+        class="invalid-feedback"
+        *ngIf="hasError('nome') && hasError('nome')!['required']"
+      >
+        Por favor informe o nome para cadastro.
+      </div>
     </div>
-    <label for="telefone" class="form-label">Telefone</label>
-    <input
-      type="text"
-      class="form-control"
-      id="telefone"
-      required
-      formControlName="telefone"
-      [ngClass]="{ 'is-invalid': submitted && hasError('telefone') }"
-    />
-    <div class="valid-feedback">Looks good!</div>
-    <div
-      class="invalid-feedback"
-      *ngIf="hasError('telefone') && hasError('telefone')!['required']"
-    >
-      Por favor informe o Número do telefone para cadastro.
+
+    <div class="row">
+      <label for="descricao" class="form-label">descricao</label>
+      <input
+        type="text"
+        class="form-control"
+        id="descricao"
+        required
+        formControlName="descricao"
+        [ngClass]="{ 'is-invalid': submitted && hasError('descricao') }"
+      />
+      <div class="valid-feedback">Looks good!</div>
+      <div
+        class="invalid-feedback"
+        *ngIf="hasError('descricao') && hasError('descricao')!['required']"
+      >
+        Por favor informe o Número do descricao para cadastro.
+      </div>
     </div>
+
+    <div class="row">
+      <label for="foto" class="form-label">foto</label>
+      <input
+        type="text"
+        class="form-control"
+        id="foto"
+        required
+        formControlName="foto"
+        [ngClass]="{ 'is-invalid': submitted && hasError('foto') }"
+      />
+      <div class="valid-feedback">Looks good!</div>
+      <div
+        class="invalid-feedback"
+        *ngIf="hasError('foto') && hasError('foto')!['required']"
+      >
+        Por favor informe o Número do foto para cadastro.
+      </div>
+    </div>
+
+    <div class="row">
+      <label for="preco" class="form-label">preco</label>
+      <input
+        type="text"
+        class="form-control"
+        id="preco"
+        required
+        formControlName="preco"
+        [ngClass]="{ 'is-invalid': submitted && hasError('preco') }"
+      />
+      <div class="valid-feedback">Looks good!</div>
+      <div
+        class="invalid-feedback"
+        *ngIf="hasError('preco') && hasError('preco')!['required']"
+      >
+        Por favor informe o Número do preco para cadastro.
+      </div>
+    </div>
+
+    <div class="row">
+      <label for="idCategoria" class="form-label">idCategoria</label>
+      <input
+        type="number"
+        class="form-control"
+        id="idCategoria"
+        required
+        formControlName="idCategoria"
+        [ngClass]="{ 'is-invalid': submitted && hasError('idCategoria') }"
+      />
+      <div class="valid-feedback">Looks good!</div>
+      <div
+        class="invalid-feedback"
+        *ngIf="hasError('idCategoria') && hasError('idCategoria')!['required']"
+      >
+        Por favor informe o Número do idCategoria para cadastro.
+      </div>
+    </div>
+
+
+
   </div>
   <div>
     <button type="submit" class="btn btn-primary" (click)="onSubmit()">
