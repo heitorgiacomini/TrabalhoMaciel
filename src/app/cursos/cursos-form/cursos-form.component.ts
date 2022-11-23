@@ -80,13 +80,16 @@ export class CursosFormComponent implements OnInit {
         {
           console.log(error);
           this._alertModalService.showAlert(
-            'Ocorreu um erro ao salvar o produto, tente novamente!',
-            'danger',
+            error.error.text,
+            'info',
             1500
           );
         },
         () => {}
       );
+
+
+
     }
   }
 

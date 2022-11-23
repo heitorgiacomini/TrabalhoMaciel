@@ -1,3 +1,4 @@
+import { IProduto } from './../IProduto';
 import { CursosService } from './../cursos.service';
 import { Curso } from './../curso';
 import { Injectable } from '@angular/core';
@@ -8,22 +9,34 @@ import { Observable, of } from 'rxjs';
   providedIn: 'root'
 })
 
-export class CursoResolverGuard implements Resolve<Curso> {
+export class CursoResolverGuard implements Resolve<IProduto> {
 
   constructor(
     private _cursosService: CursosService,
   ) {}
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Curso> {// | Promise<Curso>|  Curso  {
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<IProduto> {// | Promise<Curso>|  Curso  {
     if(route.params && route.params['id']){
       return this._cursosService.GetById(route.params['id']);
     }
 
+
     return of({
-      id: null,
+      idProduto: null,
+      idCategoria: null,
+      foto: null,
+      descricao: null,
       nome: null,
-      telefone: null
+      preco: null
     });
+
+
+    // return of({
+    //   id: null,
+    //   nome: null,
+    //   telefone: null
+    // });
+
   }
 
 }

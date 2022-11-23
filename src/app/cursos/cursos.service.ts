@@ -23,11 +23,13 @@ export class CursosService {
 
   GetById(id: number) {
     console.log("getbyid");
-    return this._http.get<Curso>(`${this.API}/${id}`)
+    let url = this.API+`get-produto.php?idProduto=${id}`;
+    return this._http.get<IProduto>(url)
     .pipe(
       take(1)
     );
   }
+
   Create(curso: IProduto) {
     let url = this.API+`add-produto.php?nome=${curso.nome}&preco=${curso.preco}&descricao=${curso.descricao}&idCategoria=${curso.idCategoria}&foto=${curso.foto}`;
     return this._http.post(url, null)
