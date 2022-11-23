@@ -77,11 +77,14 @@ export class CursosFormComponent implements OnInit {
           this._location.back();
         },
         (error) =>
+        {
+          console.log(error);
           this._alertModalService.showAlert(
             'Ocorreu um erro ao salvar o produto, tente novamente!',
             'danger',
             1500
-          ),
+          );
+        },
         () => {}
       );
     }
