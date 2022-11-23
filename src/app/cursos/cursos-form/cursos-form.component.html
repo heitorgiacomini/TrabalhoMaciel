@@ -1,0 +1,44 @@
+<form class="row g-3 needs-validation" novalidate [formGroup]="form">
+  <div class="col-md-12">
+    <label for="nome" class="form-label">Nome</label>
+    <input
+      type="text"
+      class="form-control"
+      id="nome"
+      required
+      formControlName="nome"
+      [ngClass]="{ 'is-invalid': submitted && hasError('nome') }"
+    />
+    <div class="valid-feedback">Looks good!</div>
+    <div
+      class="invalid-feedback"
+      *ngIf="hasError('nome') && hasError('nome')!['required']"
+    >
+      Por favor informe o nome para cadastro.
+    </div>
+    <label for="telefone" class="form-label">Telefone</label>
+    <input
+      type="text"
+      class="form-control"
+      id="telefone"
+      required
+      formControlName="telefone"
+      [ngClass]="{ 'is-invalid': submitted && hasError('telefone') }"
+    />
+    <div class="valid-feedback">Looks good!</div>
+    <div
+      class="invalid-feedback"
+      *ngIf="hasError('telefone') && hasError('telefone')!['required']"
+    >
+      Por favor informe o Número do telefone para cadastro.
+    </div>
+  </div>
+  <div>
+    <button type="submit" class="btn btn-primary" (click)="onSubmit()">
+      Salvar
+    </button>
+    <button type="button" class="btn btn-default" (click)="onCancel()">
+      Cancelar
+    </button>
+  </div>
+</form>
