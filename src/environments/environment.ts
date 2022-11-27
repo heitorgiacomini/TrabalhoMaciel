@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  API: 'http://www.fateclins.edu.br/felipeMaciel/macieulsCoffee/api/',
+  API: 'https://www.fateclins.edu.br/felipeMaciel/macieulsCoffee/api/',
   mediaServer : 'http://localhost:8000/'
 };
 

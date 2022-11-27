@@ -1,5 +1,5 @@
 import { Curso } from './../curso';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModalService } from 'src/app/shared/modal/alert-modal.service';
@@ -21,46 +21,20 @@ export class CursosFormComponent implements OnInit {
     private _cursosService: CursosService,
     private _alertModalService: ModalService,
     private route: ActivatedRoute,
-    private _location: Location
+    private _location: Location,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
-
     const curso = this.route.snapshot.data['curso'];
 
     this.form = this.fb.group({
       idProduto: [curso.idProduto],
-      nome: [
-        curso.nome,
-        [
-          Validators.required
-        ],
-      ],
-      descricao: [
-        curso.descricao,
-        [
-          Validators.required
-        ],
-      ],
-      foto: [
-        curso.foto,
-        [
-          Validators.required
-        ],
-      ],
-      preco: [
-        curso.preco,
-        [
-          Validators.required,
-        ]
-      ],
-      idCategoria: [
-        curso.idCategoria,
-        [
-          Validators.required
-        ],
-      ],
-
+      nome: [curso.nome, [Validators.required]],
+      descricao: [curso.descricao, [Validators.required]],
+      foto: [curso.foto, [Validators.required]],
+      preco: [curso.preco, [Validators.required]],
+      idCategoria: [curso.idCategoria, [Validators.required]],
     });
   }
 
@@ -76,20 +50,13 @@ export class CursosFormComponent implements OnInit {
           );
           this._location.back();
         },
-        (error) =>
-        {
+        (error) => {
           console.log(error);
-          this._alertModalService.showAlert(
-            error.error.text,
-            'info',
-            1500
-          );
+          this._alertModalService.showAlert(error.error.text, 'info', 1500);
+          this.router.navigate([''], { relativeTo: this.route });
         },
         () => {}
       );
-
-
-
     }
   }
 
@@ -99,7 +66,7 @@ export class CursosFormComponent implements OnInit {
   }
 
   hasError(field: string) {
-    return this.form.get(field)!.errors
+    return this.form.get(field)!.errors;
     // return this.form.controls[field].errors;
   }
 }

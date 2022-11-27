@@ -20,7 +20,8 @@ import { CursosService } from '../cursos.service';
   styleUrls: ['./cursos-lista.component.scss'],
 })
 export class CursosListaComponent implements OnInit {
-  cursos$!: Observable<any[]>;
+  produtosUm$!: Observable<any[]>;
+  produtosDois$!: Observable<any[]>;
 
   deleteModalRef!: NgbModalRef;
   @ViewChild('deleteModal', { static: true })
@@ -46,13 +47,29 @@ export class CursosListaComponent implements OnInit {
 
   onRefresh() {
     console.log(1);
-    this.cursos$ = this._cursoService.List(1).pipe(
+    this.produtosUm$ = this._cursoService.List(1).pipe(
       catchError((error) => {
         // this.error$.next(true);
         this.handleError();
         return of();
       })
     );
+
+    this.produtosDois$ = this._cursoService.List(2).pipe(
+      catchError((error) => {
+        // this.error$.next(true);
+        this.handleError();
+        return of();
+      })
+    );
+
+    // this.cursos$ += this._cursoService.List(2).pipe(
+    //   catchError((error) => {
+    //     // this.error$.next(true);
+    //     this.handleError();
+    //     return of();
+    //   })
+    // );
     // this.cursos$.subscribe(val => console.log(val));
   }
 

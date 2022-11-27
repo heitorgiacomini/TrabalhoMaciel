@@ -5,7 +5,7 @@
 <div class="card mt-3">
     <div class="card-header">
       <div class="float-left">
-        <h4>Cursos</h4>
+        <h4>produtosUm</h4>
       </div>
       <div class="float-right">
         <button type="button" class="btn btn-primary" [routerLink]="['novo']">Novo Produto</button>
@@ -13,8 +13,9 @@
       </div>
     </div>
     <div class="card-body">
-      <!-- *ngIf="(cursos$ | async) as cursos; else loading" -->
-      <table class="table table-hover" *ngIf="cursos$ | async as cursos; else loading">
+      <!-- *ngIf="(produtosUm$ | async) as produtosUm; else loading" -->
+      <!-- <table class="table table-hover" *ngIf="produtosUm$ | async as produtosUm; else loading"> -->
+      <table class="table table-hover"  >
         <thead>
           <tr>
             <th>#</th>
@@ -26,7 +27,27 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let curso of cursos" >
+          <tr *ngFor="let curso of produtosUm$ | async as produtosUm" >
+            <td>{{ curso.idProduto }}</td>
+            <td>{{ curso.nome }}</td>
+            <td>{{ curso.idCategoria }}</td>
+            <td><img src="{{ curso.foto }}" width="100px" height="100px"></td>
+            <td>{{ curso.descricao }}</td>
+            <td>{{ curso.preco }}</td>
+            <td>
+              <span class="float-right">
+                <!-- (click)="onEdit(curso.id)" -->
+                <button class="btn btn-outline-warning mb-1 btn-sm" (click)="onEdit(curso.idProduto)">
+                  Atualizar
+                </button>
+                <button class="btn btn-outline-danger mb-1 btn-sm" (click)="onDelete(curso.idProduto)" >
+                  Remover
+                </button>
+              </span>
+            </td>
+          </tr>
+
+          <tr *ngFor="let curso of produtosDois$ | async as produtosDois" >
             <td>{{ curso.idProduto }}</td>
             <td>{{ curso.nome }}</td>
             <td>{{ curso.idCategoria }}</td>
@@ -51,10 +72,10 @@
 
       <ng-template #loading>
         <div *ngIf="error$ | async; else loadingNoError">
-          Erro ao carregar cursos. Tente novamente mais tarde.
+          Erro ao carregar produtosUm. Tente novamente mais tarde.
         </div>
         <ng-template #loadingNoError>
-          <span>Carregando Cursos...</span>
+          <span>Carregando produtosUm...</span>
         </ng-template>
       </ng-template>
 

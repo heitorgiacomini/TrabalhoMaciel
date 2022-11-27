@@ -10,15 +10,15 @@ const routes: Routes = [
     path: 'novo',
     component: CursosFormComponent,
     resolve: {
-      curso: CursoResolverGuard
-    }
+      curso: CursoResolverGuard,
+    },
   },
   {
     path: 'editar/:id',
     component: CursosFormComponent,
     resolve: {
-      curso: CursoResolverGuard
-    }
+      curso: CursoResolverGuard,
+    },
   },
 ];
 
