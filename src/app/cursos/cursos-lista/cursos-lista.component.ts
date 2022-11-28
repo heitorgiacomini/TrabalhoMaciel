@@ -10,7 +10,7 @@ import {
   switchMap,
   EMPTY,
 } from 'rxjs';
-import { ModalService } from 'src/app/shared/modal/alert-modal.service';
+import { ModalService } from '../../shared/modal/alert-modal.service';
 import { Curso } from '../curso';
 import { CursosService } from '../cursos.service';
 
@@ -97,19 +97,16 @@ export class CursosListaComponent implements OnInit {
         switchMap((result) =>
           result ? this._cursoService.Delete(this.cursoId) : of()
         )
-      ).subscribe(
+      )
+      .subscribe(
         (success) => {
           //this.onRefresh();
         },
         (error) => {
           console.log(error);
-          this._modalService.showAlert(
-            error.error.text,
-            'info'
-          );
+          this._modalService.showAlert(error.error.text, 'info');
           this.onRefresh();
         }
       );
   }
-
 }
