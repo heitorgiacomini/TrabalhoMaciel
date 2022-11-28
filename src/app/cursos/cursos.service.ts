@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Curso } from './curso';
-import { environment } from 'src/environments/environment';
 import { delay, Observable, take, tap } from 'rxjs';
 import { IProduto } from './IProduto';
+import { environment } from '../../environments/environment';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -58,7 +59,7 @@ export class CursosService {
   }
 
   Save(curso: IProduto) {
-    if(curso.idProduto){
+    if (curso.idProduto) {
       return this.Update(curso);
     }
     return this.Create(curso);

@@ -2,7 +2,7 @@ import { Curso } from './../curso';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ModalService } from 'src/app/shared/modal/alert-modal.service';
+import { ModalService } from '../../shared/modal/alert-modal.service';
 import { Location } from '@angular/common';
 import { map, switchMap, tap } from 'rxjs';
 import { CursosService } from '../cursos.service';
