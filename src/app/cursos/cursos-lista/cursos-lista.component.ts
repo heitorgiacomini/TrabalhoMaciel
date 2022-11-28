@@ -102,6 +102,7 @@ export class CursosListaComponent implements OnInit {
           //this.onRefresh();
         },
         (error) => {
+          console.log(error);
           this._modalService.showAlert(
             error.error.text,
             'info'

@@ -26,7 +26,9 @@ export class CursosService {
     let url =
       this.API +
       `add-produto.php?nome=${produto.nome}&preco=${produto.preco}&descricao=${produto.descricao}&idCategoria=${produto.idCategoria}&foto=${produto.foto}`;
-    return this._http.post(url, null).pipe(take(1));
+    return this._http.get(url);
+    // return this._http.post(url).pipe(take(1));
+
     // return this._http.post(this.API, curso)
     // .pipe(
     //   take(1)
@@ -56,9 +58,9 @@ export class CursosService {
   }
 
   Save(curso: IProduto) {
-    // if(curso.idProduto){
-    //   return this.Update(curso);
-    // }
+    if(curso.idProduto){
+      return this.Update(curso);
+    }
     return this.Create(curso);
   }
 }
