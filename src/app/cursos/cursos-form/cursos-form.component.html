@@ -20,7 +20,7 @@
     </div>
 
     <div class="row">
-      <label for="descricao" class="form-label">descricao</label>
+      <label for="descricao" class="form-label">Descricao</label>
       <input
         type="text"
         class="form-control"
@@ -39,7 +39,7 @@
     </div>
 
     <div class="row">
-      <label for="foto" class="form-label">foto</label>
+      <label for="foto" class="form-label">Foto</label>
       <input
         type="text"
         class="form-control"
@@ -58,7 +58,7 @@
     </div>
 
     <div class="row">
-      <label for="preco" class="form-label">preco</label>
+      <label for="preco" class="form-label">Preco</label>
       <input
         type="text"
         class="form-control"
@@ -77,15 +77,20 @@
     </div>
 
     <div class="row">
-      <label for="idCategoria" class="form-label">idCategoria</label>
-      <input
-        type="number"
-        class="form-control"
-        id="idCategoria"
-        required
-        formControlName="idCategoria"
-        [ngClass]="{ 'is-invalid': submitted && hasError('idCategoria') }"
-      />
+      <label for="idCategoria" class="form-label">Categoria</label>
+
+
+    <select
+      type="number"
+      class="form-select"
+      id="idCategoria"
+      formControlName="idCategoria"
+      [ngClass]="{ 'is-invalid': submitted && hasError('idCategoria') }"
+      required>
+      <option value="1" selected>Bolo</option>
+      <option value="2">Bebida</option>w
+    </select>
+
       <div class="valid-feedback">Looks good!</div>
       <div
         class="invalid-feedback"
